@@ -5,6 +5,17 @@ if (!defined('_PS_VERSION_')) {
 
 class MyModule extends Module
 {
+  
+    //define tabs on prestashop 1.7
+    public $tabs = [
+        [
+            'name' => 'Loxbox', // Fallback when the translation is unavailable
+            'class_name' => 'AdminLoxbox',
+            'visible'=>true,
+            'icon'=>'shopping_basket'
+        ],
+    ];
+    
     public function __construct()
     {
         $this->name = 'mymodule';
@@ -17,6 +28,8 @@ class MyModule extends Module
             'max' => '1.7.99',
         ];
         $this->bootstrap = true;
+        
+     
 
         parent::__construct();
 
@@ -24,6 +37,17 @@ class MyModule extends Module
         $this->description = $this->l('Description of my module.');
 
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
+    //        // install Tab to register AdminController in the database
+    //   $tab = new Tab();
+    //   $tab->class_name = 'AdminLoxbox';
+    //   $tab->module = $this->name;
+    //   $tab->id_parent = (int)Tab::getIdFromClassName('DEFAULT');
+    //   $tab->icon = 'settings_applications';
+    //   $languages = Language::getLanguages();
+    //   foreach ($languages as $lang) {
+    //       $tab->name[$lang['id_lang']] = $this->l('Loxbox'.$lang['id_lang']);
+    //   }
+    //   $tab->save();
 
         if (!Configuration::get('mymodule')) {
             $this->warning = $this->l('No name provided');
