@@ -12,7 +12,8 @@ class MyModule extends Module
             'name' => 'Loxbox', // Fallback when the translation is unavailable
             'class_name' => 'AdminLoxbox',
             'visible'=>true,
-            'icon'=>'shopping_basket'
+            'icon'=>'shopping_basket',
+            'bootstrap' => true
         ],
     ];
     
